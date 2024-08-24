@@ -115,7 +115,7 @@ fi
 # Custom color prompts
 # --------------------
 # PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
-#PS1='\[\033[1;31m\]\[\033[0m\033[1;31m\]\u\[\033[1;34m\] @ \w\[\033[1;33m\] - [$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[1;33m\]]\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\]\[\033[0m\] '
+# PS1='\[\033[1;31m\]\[\033[0m\033[1;31m\]\u\[\033[1;34m\] @ \w\[\033[1;33m\] - [$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[1;33m\]]\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\]\[\033[0m\] '
 PS1='\[\033[1;35m\]\[\033[0m\033[1;35m\]\u\[\033[1;34m\] @ \w\[\033[1;33m\] - [$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[1;33m\]]\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\]\[\033[0m\] '
 
 #
@@ -133,7 +133,6 @@ export PATH=$PATH:$JAVA_HOME/bin
 #export PATH=$PATH:/opt/wso2/apictl
 export PATH=$PATH:/opt/Postman
 #export PATH=$PATH:~/.npm-global/bin
-export PATH=$PATH:/opt/nvim-linux64/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:$HOME/.local/bin
