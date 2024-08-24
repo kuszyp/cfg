@@ -180,3 +180,10 @@ export GCM_CREDENTIAL_STORE=plaintext
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# complete-alias
+# Put all new aliases that you would like to be autocompleted to ~/.complete_alias
+# and follow the instructions there
+if [ -f ~/.bash_completion ]; then
+  . ~/.bash_completion
+fi
