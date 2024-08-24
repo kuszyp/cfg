@@ -2,7 +2,17 @@
 
 ## Description
 
-### Dotfiles repository init snippet
+I found the idea to store dotfiles in the repository in [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes/). The below scripts came from the blog article [Dotfiles: Best way to store in a bare git repository Dotfiles: Best way to store in a bare git repository](https://www.atlassian.com/git/tutorials/dotfiles).
+
+## Table of Contents
+
+1. [Dotfiles repository init snippet](#dotfiles-repository-init-snippet)
+2. [Install dotfiles onto new System](#install-dotfiles-onto-new-system)
+3. [Useful commands](#useful-commands)
+4. [Useful scripts](#useful-scripts)
+
+
+## Dotfiles repository init snippet
 
 ```bash
 git init --bare $HOME/.cfg
@@ -11,7 +21,7 @@ config config --local status.showUntrackedFiles no
 echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
 ```
 
-### Install dotfiles onto new system
+## Install dotfiles onto new system
 
 1. Make sure that you have committed the alias to your _.bashrc_
 `alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
@@ -72,7 +82,7 @@ config config status.showUntrackedFiles no
 ```
 
 
-### Useful commands
+## Useful commands
 
 Assign repository with origin
 
@@ -96,4 +106,42 @@ Set up hot to reconcile divergent branches
 
 ```bash
 config config pull.rebase true
+```
+
+
+## Useful scripts
+
+I found below scripts usefull when i was playing around with storing dotfiles in the repository.
+
+### [complete-alias](https://github.com/cykerway/complete-alias)
+
+
+Install dependency bash-completion
+
+```bash
+apt install bash-completion
+```
+
+Source `complete_alias` in `~/.bash_completion`
+
+```bash
+. {complete_alias}
+```
+
+where `{complete_alias}` is the path of `complete_alias`
+
+Example
+
+```bash
+$ alias sctl='systemctl'
+$ cp complete_alias ~/.complete_alias
+$ echo ". ~/.complete_alias" >> ~/.bash_completion
+$ echo "complete -F _complete_alias sctl" >> ~/.complete_alias
+$ sctl <tab>
+add-requires
+add-wants
+cancel
+cat
+condreload
+...
 ```
