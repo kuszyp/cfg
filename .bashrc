@@ -130,7 +130,6 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 # --------------------
 export PATH=$PATH:~/idea-IC-241.18034.62/bin
 export PATH=$PATH:$JAVA_HOME/bin
-#export PATH=$PATH:/opt/wso2/apictl
 export PATH=$PATH:/opt/Postman
 #export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:/usr/local/go/bin
