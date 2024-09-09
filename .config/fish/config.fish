@@ -1,3 +1,18 @@
+###############################################################################
+# custom setup
+fish_add_path ~/.config/bin
+set -U fish_greeting # disable fish greeting
+set -U fish_key_bindings fish_vi_key_bindings
+set -Ux EDITOR nvim
+
+set -gx PATH bin $PATH
+set -gx PATH ~/bin $PATH
+set -gx PATH ~/.local/bin $PATH
+
+set sponge_successful_exit_codes 0 127 # filter out commands that don't have 0 as an exit code
+
+###############################################################################
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -6,6 +21,8 @@ end
 # aliases
 #
 alias config='/usr/bin/git --git-dir=/home/kuszyp/.cfg/ --work-tree=/home/kuszyp'
+alias g git
+command -qv nvim && alias vim nvim
 
 if type -q exa
     alias ll "exa -l -g -h -a --icons"
