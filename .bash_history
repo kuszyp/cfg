@@ -1,152 +1,3 @@
-ll
-cd wso2is
-ll
-docker compose -f compose.yaml up
-docker network ls
-docker network inspect db_network 
-docker network inspect host 
-docker compose -f compose.yaml down
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml images rm wso2is_app wso2is_db 
-docker compose -f compose.yaml image rm wso2is_app wso2is_db 
-docker compose -f compose.yaml images wso2is_app rm
-docker compose -f compose.yaml images rm wso2is_app rm
-docker images
-docker image rm wso2is-docker-wso2is_app:latest wso2is-docker-wso2is_db:latest 
-docker images
-docker image rm wso2is-wso2is_app:latest wso2is-wso2is_app:latest 
-docker images
-docker image rm wso2is-wso2is_db:latest 
-docker images
-docker container ls
-docker compose -f compose.yaml rm wso2is_app wso2is_db 
-docker network ls
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml rm wso2is_app wso2is_db 
-docker container rm 
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down 
-docker compose -f compose.yaml rm wso2is_app wso2is_db 
-docker compose -f compose.yaml up
-docker volume ls
-docker volume prune 
-docker volume ls
-docker volume rm wso2is_volume_wso2is_db
-docker compose -f compose.yaml down
-docker volume rm wso2is_volume_wso2is_db
-docker volume ls
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-tmux
-exit
-history
-ll
-docker compose -f compose.yaml up
-ll
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-cd o4b/gitlab.pm-torun.pl/pu/eregistry/infrastructure/services/
-ll
-git status
-git log
-kubectl config current-context 
-kubectl config set-context torun-prod-app 
-kubectl config use-context torun-prod-app 
-kubectl -n prod-eregistry get pods
-pwd
-ll
-cd vehicle-registry-service/
-ll
-htop
-exit
-docker volume prune exit
-exit
-kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-8b99bcbd5-h2f4q -f
-kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-8b99bcbd5-mxtln -f
-exit
-keytool -list -keystore wso2carbon.jks 
-keytool -list -keystore wso2carbon.jks |grep 2024
-exit
-kubectl config current-context 
-kubectl -n test-ciam get pods
-kubectl -n test-ciam logs am-pattern-3-is-deployment-0 -f
-kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-8b99bcbd5-h2f4q -f
-exit
-kubectl config current-context 
-kubectl config use-context torun-prod-app 
-kubectl get pods -n prod-ciam
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-kubectl -n prod-ciam logs am-pattern-3-am-gateway-default-deployment-697cf69474-62x9p -f
-kubectl -n prod-ciam logs am-pattern-3-am-gateway-default-deployment-697cf69474-hx8bv -f
-kubectl -n prod-ciam logs am-pattern-3-am-cp-2-deployment-854f79dc8c-n9cb6 -f
-kubectl -n prod-ciam logs am-pattern-3-am-cp-1-deployment-6795cc97d6-sr9w7 -f
-kubectl -n prod-ciam logs wso2db-pgo-cluster-instance1-ghqt-0 -f
-kubectl -n prod-ciam logs wso2db-pgo-cluster-instance1-s25h-0 -f
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-kubectl -n prod-ciam logs am-pattern-3-am-gateway-default-deployment-697cf69474-hx8bv -f
-kubectl -n prod-ciam get pods
-kubectl -n prod-ciam delete pod am-pattern-3-am-cp-1-deployment-6795cc97d6-sr9w7 
-kubectl -n prod-ciam delete pod am-pattern-3-am-gateway-default-deployment-697cf69474-62x9p am-pattern-3-am-gateway-default-deployment-697cf69474-hx8bv 
-kubectl get pods -n prod-ciam
-wexit
-exit
-htop
-docker compose down
-docker volume ls
-docker compose up
-docker compose down
-docker container ls
-docker ls
-docker -ls
-docker volume ls --all
-docker volume ls
-docker image ls
-docker image rm wso2-bootstrap-bootstrap:latest 
-ll
-docker image ls
-docker image rm wso2-bootstrap-bootstrap
-docker compose up
-docker container rm wso2-bootstrap-bootstrap-1
-docker image ls
-docker image prune 
-docker image rm wso2-bootstrap-bootstrap:latest 
-ll
-docker compose up
-docker compose down
-docker compose up
-docker compose down
-docker compose up
-docker compose down
-docker image rm wso2-bootstrap-bootstrap:latest 
-docker image rm wso2-bootstrap-bootstrap
-docker container ls
-docker container ls -- rl
-docker container ls -- ls
-docker container ls
-docker compose up
-docker compose down
-docker container 
-docker container ls -- ls
-docker image rm wso2-bootstrap-bootstrap:latest \
-docker image rm wso2-bootstrap-bootstrap:latest 
-docker volume ls
-docker volume ls --all
-docker volume ls -all
-docker compose up
-docker compose down
-docker compose images bootstrap 
-docker compose images ls
-docker compose images ls --all
-docker compose images rm bootstrap 
-docker compose down
 docker image ls
 docker image rm wso2-bootstrap-bootstrap:latest 
 docker network ls
@@ -1997,4 +1848,153 @@ ll
 exit
 ll
 lla
+exit
+cd
+exit
+cd 
+nvim .
+fish
+exit
+pwd
+exit
+cd o4b/elasticsearch-8.15.1/bin/
+./elasticsearch
+tmux
+cd 
+cd o4b/elasticsearch-8.15.1/
+./bin/elasticsearch
+cd ..
+cd elk/
+nvim .
+./elasticsearch-8.15.1/bin/elasticsearch
+cd elasticsearch-8.15.1/
+ll
+cd config/
+ll
+nvim .
+cd ..
+./bin/elasticsearch
+nvim .
+./bin/elasticsearch
+exit
+cd 
+cd o4b/elk/
+cd logstash-8.15.1/
+./bin/logstash -e config/logstash-filebeat.conf 
+nvim .
+./bin/logstash -e config/logstash-filebeat.conf 
+cd 
+cd o4b/wso2is-6.1.0/
+nvim .
+cd 
+cd o4b/elk/logstash-8.15.1/
+./bin/logstash -f config/logstash-filebeat.conf 
+cd ..
+cd elasticsearch-8.15.1/
+ll
+cd config/
+ll
+cd certs/
+ll
+curl --cacert /home/kuszyp/o4b/elk/elasticsearch-8.15.1/config/certs/http_ca.crt -u elastic:gx0J55qjGdyO27RMG+Yr https://localhost:9200
+cd ..
+cd filebeat-8.15.0/
+;;
+ll
+nvim filebeat-wso.yml 
+sudo nvim filebeat-wso.yml 
+cd ..
+cd logstash-8.15.1/
+ll
+cd config/
+ll
+nvim logstash-filebeat.conf 
+cd ..
+./bin/logstash -f config/logstash-filebeat.conf 
+ll
+nvim config/
+./bin/logstash -f config/logstash-filebeat.conf 
+clear
+./bin/logstash -f config/logstash-filebeat.conf 
+exit
+cd 
+cd o4b/wso2is-6.1.0/
+cd bin/
+./wso2server.sh 
+ll
+sudo ./wso2server.sh 
+./wso2server.sh 
+nvim ~/.bash_variables 
+source ~/.bashrc 
+./wso2server.sh 
+cd ..
+emdir wso2is-6.1.0
+rmdir wso2is-6.1.0
+rmdir -f wso2is-6.1.0
+rmdir -rf wso2is-6.1.0
+rmdir -F wso2is-6.1.0
+rmdir -R wso2is-6.1.0
+rmdir -r wso2is-6.1.0
+ll
+rmdir wso2is-6.1.0/
+rmdir wso2is-6.1.0/ -f
+rmdir wso2is-6.1.0/ --help
+rmdir wso2is-6.1.0/ -p
+rmdir --help
+man rmdir
+rm -rf wso2is-6.1.0
+ll
+cd wso2is-6.1.0/
+cd bin/
+ll
+./wso2server.sh 
+nvim ~/.bash_variables 
+source ~/.bashrc 
+./wso2server.sh 
+cd ..
+nvim .
+cd bin/
+./wso2server.sh 
+nvim .
+./wso2server.sh 
+nvim .
+./wso2server.sh 
+exit
+cd 
+cd o4b/
+cd elk/
+nvim .
+cd filebeat-8.15.0/
+sudo ./filebeat -e -c filebeat-wso.yml 
+ll
+chown 600 filebeat-wso.yml 
+sudo chown 600 filebeat-wso.yml 
+ll
+sudo chown kuszyp filebeat-wso.yml 
+ll
+chown 600 filebeat-wso.yml 
+chmod 600 filebeat-wso.yml 
+ll
+sudo ./filebeat -e -c filebeat-wso.yml 
+sudo chown root filebeat-wso.yml 
+ll
+sudo ./filebeat -e -c filebeat-wso.yml 
+exit
+clear
+cd 
+cd o4b/elasticsearch-8.15.1/
+./bin/elasticsearch
+cd ..
+cd kibana-8.15.1/
+./bin/kibana
+nvim ~/.bash_variables 
+cd 
+source .bashrc 
+cd o4b/
+cd elk/
+./kibana-8.15.1/bin/kibana
+exit
+nvim .
+exit
+nvim .
 exit
