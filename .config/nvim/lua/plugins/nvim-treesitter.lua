@@ -33,6 +33,7 @@ return {
         "regex",
         "vim",
         "yaml",
+        "helm",
       })
     end,
   },
