@@ -2,13 +2,22 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+###############################################################################
+# aliases
+#
 alias config='/usr/bin/git --git-dir=/home/kuszyp/.cfg/ --work-tree=/home/kuszyp'
 
 if type -q exa
     alias ll "exa -l -g -h -a --icons"
     #alias lla "ll -a"
 end
+###############################################################################
 
+###############################################################################
+# user shell variables
+#
+export GCM_CREDENTIAL_STORE=plaintext
+###############################################################################
 
 # name: sashimi
 function fish_prompt
