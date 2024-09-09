@@ -1,575 +1,3 @@
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f |grep EMPLOYEE
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f |grep CITIZENS
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f |grep userstores
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-cd ..
-cd deploy/is/repository/deployment/server/userstores/
-ll
-rm EMPLOYEES.yaml 
-ll
-git pull
-cd ..
-ll
-cd init-project/
-ll
-cd project-config/
-ll
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-git pull
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl config use-context grudziadz-prod-app 
-cd ..
-cd 
-cd o4b/gitlab.pm-grudziadz.pl/
-ll
-cd pu/ciam/infrastructure/
-ll
-fit pull
-git pull
-cd prod/
-ll
-cd init-project/project-config/
-ll
-kubectl config current-context 
-kubectl delete -f argo-app-application.yaml 
-cd ..
-cd wso2/
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-ll
-./generate-keys.sh 
-kubectl -n prod-ciam get secrets 
-cd ..
-cd project-config/
-kubectl apply -f argo-app-application.yaml 
-cd ..
-cd wso2/
-ll
-nano generate-keys.sh 
-openssl x509 -in certs/login_gov_certificate.crt -pubkey -noout -out public.pub
-ll
-cat public.pub 
-cd ..
-cd project-config/
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-git push
-kubectl delete -f argo-app-application.yaml 
-git pull
-ll
-cd ..
-cd wso2/
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-nano generate-keys.sh 
-./generate-keys.sh 
-cd ..
-cd project-config/
-kubectl apply -f argo-app-application.yaml 
-kubectl -n prod-ciam get secrets wso2is-keystore-jks-secret -o yaml
-kubectl -n prod-ciam get secrets wso2is-client-truststore-jks-secret -o yaml
-kubectl -n prod-ciam describe secrets wso2is-client-truststore-jks-secret 
-ll
-cd ..
-cd wso2/
-ll
-kubectl exec -it -n prod-ciam am-pattern-3-is-deployment-0 -- /bin/bash
-ll
-nano generate-keys.sh 
-ll
-kubectl config current-context 
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-nano generate-keys.sh 
-./generate-keys.sh 
-cd ..
-cd project-config/
-ll
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-cd ,,
-cd ..
-cd wso2/
-git pull
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-./generate-keys.sh 
-nano generate-keys.sh 
-./generate-keys.sh 
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-./generate-keys.sh 
-cd ..
-cd project-config/
-kubectl apply -f argo-app-application.yaml 
-kubectl exec -it -n prod-ciam am-pattern-3-is-deployment-0 -- /bin/bash
-kubectl delete -f argo-app-application.yaml 
-git pull
-kubectl apply -f argo-app-application.yaml 
-cd ..
-cd wso2/
-ll
-cd subscription/
-SOAPUI_HOME=~/SmartBear/SoapUI-5.7.2/ ./skrypt.sh 
-history |grep openssl
-kubectl -n prod-ciam get secrets wso2is-client-truststore-jks-secret -o yaml
-kubectl config current-context 
-kubectl config use-context torun-prod-app 
-kubectl get pods -n prod-ciam 
-cd 
-cd o4b/gitlab.pm-torun.pl/
-ll
-cd pu/ciam/infrastructure/
-ll
-git pull
-kubectl config current-context 
-ll
-git pull
-cd prod/
-ll
-cd init-project/project-config/
-ll
-nano argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-kubectl -n prod-ciam port-forward wso2db-pgo-cluster-instance1-ghqt-0 54328:5432
-ll
-cd ..
-cd wso2/
-ll
-kubectl -n prod-ciam get secrets wso2is-client-truststore-jks-secret -o yaml
-kubectl -n prod-ciam get secrets
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-kubectl -n prod-ciam get secrets
-./generate-keys.sh 
-kubectl -n prod-ciam get secrets
-cd ..
-cd project-config/
-ll
-kubectl apply -f argo-app-application.yaml 
-history |grep keytool
-git pull
-nano argo-app-application.yaml 
-kubectl config current-context 
-kubectl delete -f argo-app-application.yaml 
-cd ..
-cd wso2/
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-./generate-keys.sh 
-cd ..
-cd project-config/
-kubectl apply -f secret-helm.yaml 
-kubectl apply -f image-pull-secret.yaml 
-kubectl apply -f create-ns.yaml 
-kubectl apply -f argo-app-project.yaml 
-kubectl apply -f argo-app-application.yaml 
-cd ..
-cd deploy/is/repository/deployment/server/userstores/
-ll
-cd ../../../../
-cd ../../../
-cd test/deploy/is/repository/deployment/server/userstores/
-ll
-cd ~/o4b/gitlab.pm-torun.pl/pu/ciam/infrastructure/prod/deploy/is/repository/deployment/server/userstores/
-ll
-xs ..
-cd
-cd o4b/gitlab.pm-torun.pl/pu/ciam/infrastructure/prod/init-project/project-config/
-kubectl delete -f argo-app-application.yaml 
-kubectl get pods -n prod-ciam
-kubectl apply -f argo-app-application.yaml 
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl exec -it -n prod-ciam am-pattern-3-is-deployment-0 -- /bin/bash
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-git pull
-kubectl delete -f argo-app-application.yaml 
-git pull
-kubectl apply -f argo-app-application.yaml 
-git pull
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-ll
-cd ..
-cd wso2/
-ll
-cd subscription/
-..
-ll
-SOAPUI_HOMR=~/SmartBear/SoapUI-5.7.2/ ./skrypt.sh 
-SOAPUI_HOMR=~/SmartBear/SoapUI-5.7.2 ./skrypt.sh 
-SOAPUI_HOME=~/SmartBear/SoapUI-5.7.2 ./skrypt.sh 
-kubectl config use-context grudziadz-prod-app 
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-kubectl config use-context bydgoszcz-prod-app 
-kubectl -n prod-ciam get pods
-kubectl config current-context 
-kubectl -n prod-ciam port-forward wso2db-pgo-cluster-instance1-288w-0 
-kubectl -n prod-ciam port-forward wso2db-pgo-cluster-instance1-288w-0 54328:5432
-cd ..
-cd gitlab.pm.bydgoszcz.pl/pu/ciam/infrastructure/
-ll
-git pull;
-git pull
-ll
-cd prod/
-git pull
-cd init-project/project-config/
-cd ..
-cd wso2/
-ll
-kubectl -n prod-ciam delete secrets wso2is-keystore-jks-secret wso2is-client-truststore-jks-secret wso2am-keystore-jks-secret wso2am-client-truststore-jks-secret 
-kubectl -n prod-ciam get secrets 
-./generate-keys.sh 
-kubectl -n prod-ciam get secrets 
-ll
-cd ..
-cd project-config/
-ll
-kubectl delete -f argo-app-application.yaml 
-ll
-kubectl apply -f secret-helm.yaml 
-kubectl apply -f image-pull-secret.yaml 
-kubectl apply -f argo-app-application.yaml 
-kubectl exec -it -n prod-ciam am-pattern-3-is-deployment-0 -- /bin/bash
-git pull
-kubectl delete -f argo-app-application.yaml 
-kubectl apply -f argo-app-application.yaml 
-cd ..
-cd wso2/
-ll
-cd subscription/
-SOAPUI_HOME=~/SmartBear/SoapUI-5.7.2 ./skrypt.sh 
-kubectl config current-context 
-kubectl config use-context torun-prod-app 
-kubectl -n prod-ciam logs am-pattern-3-is-deployment-0 -f
-cd ~
-sudo apt update
-sudo apt upgrade
-cd ~/.config/nvim
-nvim
-cd -
-pwd
-cd o4b/
-ll
-cd gitlab.o4b.tech/
-ll
-cd pu/ciam/
-;;
-ll
-cd scripts/
-ll
-cd ..
-cd wso2-extensions/
-ll
-cd identity-inbound-provisioning-scim2/
-ll
-nvim
-cd ..
-ll
-cd apimanager-definitions/
-ll
-cd internal-services/
-ll
-cd apis/
-ll
-cd portal-api/
-ll
-cd portal-api-1.0.0/
-ll
-cd Definitions/
-cd ..
-nvim .
-git pull
-cd ..
-ll
-mv portal-api portal-registry-actions-api
-ll
-cd portal-registry-actions-api/
-ll
-git pull
-git log
-ll
-cd portal-api-1.0.0/
-;;
-ll
-cd ..
-mv portal-api-1.0.0 portal-registry-actions-api-1.0.0
-git status
-nvim
-nvim .
-nvim
-nvim .
-nvim
-nvim .
-exit
-cd o4b/scripts/
-ll
-nvim backup_ciam_db_Fc.sh 
-./backup_ciam_db_Fc.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db_Fc.sh 
-./backup_ciam_db_Fc.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db.sh 
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db.sh 
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db.sh 
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db.sh 
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-nvim backup_ciam_db.sh 
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-./backup_ciam_db_Fc.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-./backup_ciam_db.sh test-ciam ~/o4b/test.pm.bydgoszcz.pl/db/2024-08-02
-cd ..
-cd gitlab.o4b.tech/pu/ciam/scripts/db-schemas-configuration-clean-up/
-cat README.md 
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-kubectl config current-context 
-./run.sh -d wso2am_shared_db -n test-ciam
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-./run.sh -d wso2am_db -n test-ciam
-kubectl -n test-ciam logs wso2db-pgo-cluster-instance1-ngdc-0 
-kubectl -n test-ciam logs wso2db-pgo-cluster-instance1-sv6x-0 
-cd 
-cd o4b/gitlab.o4b.tech/pu/ciam/
-ll
-cd wso2-extensions/identity-apps/
-git checkout test-bydgoszcz 
-git pull
-git status
-cd 
-cd o4b/gitlab.o4b.tech/pu/ciam/scripts/db-schemas-configuration-clean-up/
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-./run.sh -d wso2am_db -n test-ciam
-./run.sh -d wso2am_shared_db -n test-ciam
-uptime
-uptime -p
-uptime -s
-clear
-uptime -p
-uptime -s
-uptime
-git status
-kubectl -n prod-ciam logs am-pattern-3-am-gateway-default-deployment-785f954d45-cjpgc -f
-cd 
-kubectl -n prod-eregistry logs portal-registry-service-6ffdcd486d-5v5d9 -f
-kubectl -n prod-eregistry logs portal-registry-service-6ffdcd486d-5v5d9 > o4b/pm-grudziadz.pl/portal-registry-service-6ffdcd486d-5v5d9.log
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-c8vr-0 -f
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-d66c-0 -f
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-c8vr-0 -f
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-d66c-0 -f
-exit
-tmux
-cd
-cd o4b/gitlab.o4b.tech/pu/ciam/apimanager-definitions/internal-services/apis/
-ll
-cd profile-registry-actions-api/
-git fetch
-git pull
-git checkout master 
-git pull
-git branch -m master main
-git push -u origin main 
-git pull
-git fetch
-kubectl config current-context 
-kubectl -n prod-eregistry get pods
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-c8vr-0 -f
-kubectl -n prod-eregistry logs eregistry-pgo-cluster-instance1-d66c-0 -f
-htop
-cd o4b/gitlab.o4b.tech/
-ll
-mkdir -p pkuszyk/scripts
-ll
-cd pkuszyk/scripts/
-ll
-ls -al
-cd ..
-rmdir scripts/
-git clone https://gitlab.o4b.tech/pkuszyk/scripts.git
-ll
-cd scripts/
-ll
-cd ..
-ll
-cd pu/ciam/
-ll
-cd docker/
-ll
-docker-init-is/
-ll
-cd docker-init-is/
-ll
-git pull
-git status
-ll
-nvim PU-IS-soapui-project.xml 
-idea .
-nano ~/.bashrc 
-idea.sh 
-idea
-cd ~
-ll
-cd idea-IC-241.18034.62/
-ll
-cd bin/
-ll
-./idea.sh 
-cd ..
-ll
-nano Install-Linux-tar.txt 
-cd ..
-cd o4b/gitlab.o4b.tech/
-ll
-cd pu/ciam/docker/docker-init-is/
-git status
-git checkout PU-IS-soapui-project.xml
-git status
-git pull
-cd ..
-ll
-cd wso2is-docker-config/
-ll
-cd ..
-mv wso2is-docker-config/ wso2is-docker
-ll
-cd wso2is-docker/
-ll
-nvim docker-compose.yml 
-ll
-docker compose up
-nvim docker-compose.yml 
-ll
-cd dockerfiles/
-ll
-cd wso2is/
-ll
-nvim Dockerfile 
-cd ..
-nvim docker-compose.yml 
-docker compose up
-docker compose down
-docker ps
-docker volume 
-docker volume ls
-docker
-docker container 
-docker container ls
-docker container ls --help
-docker container ls --all
-.,.qa
-cd o4b/wso2is-docker/
-ll
-docker ps
-ll
-cd conf/
-;;
-ll
-cd postgres/
-ll
-cd ..
-nvim .
-ll
-mv docker-compose.yml docker-compose.yaml
-ll
-nvim .
-cd ..
-ll
-mv wso2is-docker/ docker-wso2is
-ll
-mkdir docker-wso2is-init
-ll
-cd docker-wso2is-init/
-ll
-nvim .
-cd ..
-mc docker-wso2is-init/ docker-sample
-mv docker-wso2is-init/ docker-sample
-ll
-cd ..
-ll
-mkdir -p github.com/kuszyp
-cd github.com/kuszyp/
-git clone https://github.com/kuszyp/docker.git
-ll
-cd docker/
-ll
-mv ~/o4b/docker-sample/ ./sample
-ll
-nvim .
-source ~/.bashrc 
-nvim .
-source ~/.bashrc 
-nvim .
-wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.5.1/gcm-linux_amd64.2.5.1.deb
-sudo dpkg -i gcm-linux_amd64.2.5.1.deb 
-git-credential-manager configure
-nvim .bashrc 
-source .bashrc 
-nvim .bashrc 
-source .bashrc 
-wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
-sudo wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
-cd github.com/kuszyp/docker/
-ll
-cd wso2is-init/
-ll
-docker run --rm -it $(docker build -q .)
-docker images
-docker run --rm $(docker build .)
-docker run $(docker build .) --rm
-docker run $(docker build .)
-docker run --help
-docker run --rm $(docker build .)
-docker images
-docker run --rm $(docker build .)
-docker run --rm -it $(docker build .)
-docker run --rm $(docker build .) -it
-docker run -it $(docker build .) --rm
-docker run -it --rm $(docker build .)
-docker run --rm -it $(docker build -q .)
-docker run --rm -it $(docker build  .)
-docker run --rm -it $(docker build -q .)
-docker run --rm $(docker build -q .)
-docker run --rm $(docker build .)
-docker run --rm $(docker build -q .)
-docker run --rm -it $(docker build -q .)
-docker run --rm -it $(docker build  .)
-docker run --rm -it $(docker build -q .)
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down && docker volume rm wso2is_volume_wso2is_db
-docker compose -f compose.yaml up
-docker compose -f compose.yaml up --detach 
-docker logs wso2is-wso2is_app-1 
-docker logs wso2is-wso2is_app-1 --follow 
-docker compose -f compose.yaml stop
-docker compose -f compose.yaml down
-docker compose -f compose.yaml down && docker volume rm wso2is_volume_wso2is_db
-exit
-cd ..
-cd wso2is-init/
-docker compose -f compose.yaml up
-docker network ls
-docker compose -f compose.yaml down
-docker container ls
-docker compose -f compose.yaml up
-docker compose -f compose.yaml down
-docker compose -f compose.yaml up
-exit
-cd github.com/kuszyp/docker/
 ll
 cd wso2is
 ll
@@ -1997,4 +1425,576 @@ cd add-profile/
 ll
 nvim .
 node app.js 
+exit
+cd github.com/kuszyp/docker/
+nvim .
+cd 
+nvim
+config status
+diff .gitconfig 
+config diff .gitconfig 
+config add .config/nvim/lazy-lock.json .gitconfig .config/nvim/lua/config/lazy.lua
+config add terminal-app/
+config rm --cached terminal-app
+config rm --cached terminal-app/
+config rm -f --cached terminal-app/
+ll
+config add terminal-app/
+config add trust.zone/
+config add .dir_colors/
+config add .xmlcopyeditor .tmux.conf .profile .lesshst .gitmodules .gitignore .gitconfig .complete_alias .bashrc .bash_logout .bash_history .bash_completion .bash_aliases
+config status
+config commit -m "chore: add trust.zone ovpn and .bash files"
+config push
+htop
+cd 
+cd o4b/gitlab.pm.bydgoszcz.pl/
+ll
+cd pu/ciam/infrastructure/
+git pull
+ll
+cd prod/
+ll
+nvim .
+git config pull.rebase true
+nvim .
+cd ..
+cd 
+cd o4b/gitlab.pm-grudziadz.pl/
+cd pu/ciam/
+cd infrastructure/
+git config pull.rebase true
+nvim .
+qnapi Mr.Inbetween.S02E*
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-566b498d55-qtctn -f
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-64d5c9f584-ql8fb -f
+exit
+cd o4b/gitlab.o4b.tech/pu/ciam/wso2-extensions/
+ll
+cd profile-switch-grant-handler/
+;;
+ll
+mvn clean
+mvn install -P
+mvn install -U
+mvn install -o
+mvn clean
+mvn clean install
+mvn clean install -U
+sudo nala update
+sudo nala upgrade
+sudo nala update
+clear
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-566b498d55-gwjth -f
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-566b498d55-qtctn -f
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-566b498d55-gwjth -f
+kubectl -n test-ciam get pod
+kubectl -n test-ciam logs am-pattern-3-am-gateway-default-deployment-64d5c9f584-7nxlj -f
+exit
+cd github.com/kuszyp/node-scripts/
+;;
+ll
+cd easyredmine-mock/
+ll
+docker image ls --all
+docker container ls --al
+docker container ls
+docker compose up
+ll
+npm install
+ll
+docker compose up
+docker container ls
+docker compose up --detach 
+docker container ls
+docker logs easyredmine-mock-easyredmine-server-1 
+docker logs easyredmine-mock-easyredmine-server-1 -f
+docker logs wso2apim-with-is-as-km-is-1 -f
+docker exec -it wso2apim-with-is-as-km-am-1 /bin/bash
+cd ..
+cd docker/
+ll
+cd wso2-bootstrap/
+docker compose down
+cd ..
+cd wso2apim-with-is-as-km/
+ll
+docker compose up --detach 
+docker logs wso2apim-with-is-as-km-am-1 -f
+docker compose down
+docker image ls --all
+docker image rm wso2apim-with-is-as-km-am:latest wso2apim-with-is-as-km-is:latest wso2apim-with-is-as-km-db:latest 
+docker image ls --all
+docker container ls --all
+docker volume ls
+docker volume rm wso2apim-with-is-as-km_volume_db 
+docker compose up --detach 
+docker logs wso2apim-with-is-as-km-am-1 -f
+docker compose down
+docker volume rm wso2apim-with-is-as-km_volume_db 
+docker image rm wso2apim-with-is-as-km-am:latest wso2apim-with-is-as-km-is:latest wso2apim-with-is-as-km-db:latest 
+docker compose down
+docker compose up --detach 
+docker logs wso2apim-with-is-as-km-am-1 -f
+docker compose down
+docker image rm wso2apim-with-is-as-km-am:latest wso2apim-with-is-as-km-is:latest wso2apim-with-is-as-km-db:latest 
+docker volume rm wso2apim-with-is-as-km_volume_db 
+docker compose up
+docker container ls
+docker container start wso2apim-with-is-as-km-am-1 
+docker container start wso2apim-with-is-as-km-is-1 
+docker container ls
+docker container ls --all
+docker system 
+docker system info
+docker system events 
+docker system df
+docker context ls
+docker ps -as
+docker container 
+docker ps
+docker ps -a
+docker container stop wso2apim-with-is-as-km-is-1 
+ll
+docker compose up is
+docker container ls
+docker container ls -a
+docker container rm wso2apim-with-is-as-km-is-1 
+docker compose up is --detach 
+docker ls
+docker ps
+exit
+qnapi Mr.Inbetween.S03E0*
+mvn install -U
+mvn clean
+mvn install -U
+mvn install -U -o
+mvn clean
+mvn install -U -o
+mvn install -U
+mvn clean
+mvn install -U
+mvn clean
+mvn install -U
+kubectl -n prod-eregistry exit
+exit
+tmux
+exit
+nvim .
+ll
+cd ..
+cd chart-apim-feat-rc-0.2.1/
+helm am-pattern-3 am-pattern-3/
+helm install am-pattern-3 am-pattern-3/
+cd 
+kubectl create namespace argocd
+kubectl get namespaces 
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+sudo nala update
+sudo nala install 7zip 
+7z -h
+cd Downloads/
+;;
+ll
+cd ..
+cd Documents/
+ll
+7z e Dokument\ Biuro\ Maklerskie.7z 
+sudo nala install p7zip
+p7zip
+wxit
+exit
+nvim .
+:qa
+cd 
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+minikube start
+kubectl config use-context minikube 
+kubectl config current-context 
+kubectl get pods
+kubectl get pod
+kubectl get po -A
+kubectl get --help
+kubectl get podd -A
+kubectl get pods -A
+minikube dashboard'
+minikube dashboard
+minikube stop
+exit
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+docker run es01
+docker run --name es01
+docker run --name /es01
+exit
+cd 
+cd github.com/kuszyp/docker/wso2apim-with-is-as-km/
+docker compose ls
+docker compose ls -a
+docker compose watch 
+docker compose down
+docker container 
+docker container ls
+docker container ls -a
+docker volume ls
+docker volume rm wso2apim-with-is-as-km_volume_db 
+docker compose up --detach 
+docker logs wso2apim-with-is-as-km-is-1 -f
+docker network create elastic
+docker network ls
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+docker run --name es01 --network elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0 
+docker container rm es01 
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+sudo nvim /etc/sysctl.conf 
+sudo sysctl vm.max_map_count=262144
+docker container rm es01 
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+docker run -e "ENROLLMENT_TOKEN=eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjIwLjAuMjo5MjAwIl0sImZnciI6IjUzOTY4NmRhZDBiNDQzZGZlZTVmNmM1ZGFlYzBmZWY2ODE3ZGVlMmNlYmY4NTY1NWY2ZTE5MzhmZmVkOTMxMjkiLCJrZXkiOiJGMlh0d1pFQm9CcDFnX1VpclhGMjpwczN2a0NzSVFQNmpxZ2lxdjVJaG93In0=" docker.elastic.co/elasticsearch/elasticsearch:8.15.0 
+docker container ls
+docker container ls 
+docker container rm eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjIwLjAuMjo5MjAwIl0sImZnciI6IjUzOTY4NmRhZDBiNDQzZGZlZTVmNmM1ZGFlYzBmZWY2ODE3ZGVlMmNlYmY4NTY1NWY2ZTE5MzhmZmVkOTMxMjkiLCJrZXkiOiJGMlh0d1pFQm9CcDFnX1VpclhGMjpwczN2a0NzSVFQNmpxZ2lxdjVJaG93In0=
+docker container rm es01 crazy_lamarr 
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+ll
+curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
+docker run -e "ENROLLMENT_TOKEN=eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjIwLjAuMjo5MjAwIl0sImZnciI6IjM2NGU3NGMzYTNlYjJiYWI5OTkzZGMzZTA4MjEwNzQzMjgzYmI5MGU1MGU0ZDU4NDZkYzk1ZjIwNzIyOGY5NTEiLCJrZXkiOiJLaWY2d1pFQjFmN0N2dUxmSkt2NzpHN2Q3VEZHNVNCS210ZVdiak5ocURnIn0=" docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+docker containers ls
+docker container ls
+docker container ls -a
+docker container start es01 
+docker container ls -a
+docker container rm fervent_mirzakhani 
+curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
+curl --cacert http_ca.crt -u elastic:HZBaJWEpV9EDH+OFf-HA https://localhost:9200
+docker pull docker.elastic.co/kibana/kibana:8.15.0
+exit
+cd 
+docker image
+docker images
+helm
+help list
+helm list
+cd o4b/gitlab.o4b.tech/pu/ciam/
+ll
+cd infrastructure/
+ll
+mkdir local
+ll
+cd 
+cd o4b/
+YOUR_GITHUB_UN="kuszyp"
+git clone --depth 1 "git@github.com:${YOUR_GITHUB_UN}/postgres-operator-examples.git"
+cd postgres-operator-examples
+echo $YOUR_GITHUB_USERNAME
+cd ..
+cd github.com/kuszyp/
+git clone https://github.com/kuszyp/postgres-operator-examples.git
+ll
+cd postgres-operator-examples/
+nvim .
+kubectl config current-context 
+kubectl apply -k kustomize/install/namespace
+kubectl apply --server-side -k kustomize/install/default
+kubectl get pods -n postgres-operator 
+kubectl get pods -n postgres-operator --selector=postgres-operator.crunchydata.com/control-plane=postgres-operator --field-selector=status.phase=Running
+kubectl apply --server-side -k kustomize/install/default
+kubectl apply -k kustomize/install/namespace
+kubectl apply --server-side -k kustomize/install/default
+kubectl delete --server-side -k kustomize/install/default
+kubectl delete -k kustomize/install/default
+nslookup registry.developers.crunchydata.com
+kubectl delete -k kustomize/install/default
+kubectl apply -k kustomize/install/default
+kubectl delete -k kustomize/install/default
+kubectl apply -k kustomize/install/default
+kubectl delete -k kustomize/install/default
+kubectl apply -k kustomize/install/default
+kubectl delete -k kustomize/install/default
+kubectl apply --server-side -k kustomize/install/default
+cd 
+nvim .bashrc 
+nvim .bash_aliases 
+nvim .bash_variables
+nvim ./
+nvim .
+source .bashrc 
+echo $ELASTIC_PASSWORD
+exit
+qnapi Trap.2024.1080p.AMZN.WEBRip.1400MB.DD5.1.x264-GalaxyRG.mkv 
+nvim .bash_variables 
+cd github.com/kuszyp/docker/wso2apim-with-is-as-km/
+ll
+rm http_ca.crt 
+docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+ll
+rm http_ca.crt 
+cd ..
+cd 
+cd o4b/
+docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200
+curl --cacert http_ca.crt -u elastic:=6tUESyiq6mRJRj+mknK https://localhost:9200
+exit
+cd 
+cd o4b/
+docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.15.0
+exit
+nvim
+docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.15.0
+docker container ls
+docker container ls -a
+docker container rm kib01 es01
+docker container stop es01 
+docker container rm kib01 es01
+docker container ls -a
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+exit
+cd 
+cd o4b/
+docker pull docker.elastic.co/beats/filebeat:8.15.0
+docker run docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["elasticsearch:9200"]  
+docker run docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["0.0.0.0:9200"]  
+docker run docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["elastic:9200"]  
+docker run docker.elastic.co/beats/filebeat:8.15.0 --network elastic setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["ex01:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["es01:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["http://0.0.0.0:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kibana:5601 -E output.elasticsearch.hosts=["http://127.0.0.1:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["es01:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["https://es01:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["es01:9200"]  
+docker run --network elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["es01:5601"]  
+docker run --net elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["es01:9200"]
+docker run --net elastic docker.elastic.co/beats/filebeat:8.15.0 setup -E setup.kibana.host=kib01:5601 -E output.elasticsearch.hosts=["172.20.0.2:9200"]
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.15.1-linux-x86_64.tar.gz
+ll
+vtop
+ctop
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.15.0-linux-x86_64.tar.gz
+tar xzvf filebeat-8.15.0-linux-x86_64.tar.gz
+docker container stop wso2apim-with-is-as-km-am-1 wso2apim-with-is-as-km-is-1 wso2apim-with-is-as-km-db-1 
+exit
+cd 
+cd o4b/
+ll
+cd chart-apim-feat-rc-0.2.1/
+ll
+helm install
+helm install am-pattern-3/
+helm install am-pattern-3
+cd am-pattern-3/
+ll
+helm install
+helm install Chart.yaml 
+helm install am-pattern-3
+cd ,,
+cd ..
+ll
+xs chart-apim-feat-rc-0.2.1
+cd chart-apim-feat-rc-0.2.1/
+ll
+helm install am-pattern-3 am-pattern-3/
+nvim .
+nvim
+nvim .
+nvim
+nvim .
+nvim
+nvim .
+cd 
+cd o4b/gitlab.o4b.tech/pu/ciam/infrastructure/
+ll
+cd local/
+cd ..
+nvim .
+cd ..
+cd 
+cd github.com/kuszyp/docker/wso2apim-with-is-as-km/
+ll
+docker compose down is
+docker container ls
+docker container ls -a
+ctop 
+cd ..
+cd portainer/
+docker compose up --detach 
+docker container ls
+exit
+ll
+cd
+cd o4b/gitlab.o4b.tech/pu/ciam/infrastructure/
+ll
+cd local/
+ll
+nvim ,
+nvim .
+exit
+tmux
+exit
+nvim .
+cd ..
+cd kibana-8.15.1/
+ll
+cd bin/
+./kibana
+cd ..
+cd 
+cd o4b/elk/kibana-8.15.1/
+ll
+./bin/kibana-plugin install https://github.com/fbaligand/kibana-enhanced-table/releases/download/vA.B.C/enhanced-table-8.15.1_8.15.1.zip
+./bin/kibana-plugin install https://github.com/fbaligand/kibana-enhanced-table/releases/download/v1.14.0/enhanced-table-1.14.0_8.15.0.zip
+cd ..
+nvim .
+sudo nvim .
+sudo nano filebeat-8.15.0/filebeat-wso.yml 
+exit
+cd o4b/gitlab.o4b.tech/pu/ciam/infrastructure/
+git pull 
+git checkout local 
+nvim .
+git pull
+git checkout local 
+git pull
+cd ..
+ll
+cd helm/
+cd chart-apim/
+git pull
+git checkout main 
+git pull 
+minikube --help
+w
+minikube start
+kubectl get namespaces 
+kubectl delete ns postgres-operator 
+kubectl get namespaces 
+kubectl -n default get pods
+kubectl create namespace postgres-operator
+cd 
+cd o4b/
+ll
+git clone https://github.com/CrunchyData/postgres-operator-examples.git
+cd postgres-operator-examples/
+kubectl apply --server-side -k kustomize/install/default
+kubectl -n postgres-operator get pods
+cd ..
+cd gitlab.o4b.tech/pu/ciam/infrastructure/
+ll
+cd local/
+ll
+cd init-project/
+ll
+cd project-config/
+ll
+kubectl apply -f .
+cd ..
+ll
+cd postgresql/
+;;
+ll
+kubectl apply -k .
+kubectl -n postgres-operator get pods
+kubectl -n local-ciam get pods
+kubectl -n local-ciam describe pod/wso2db-pgo-cluster-instance1-mbl7-0 
+kubectl -n local-ciam get pods
+kubectl create -f https://download.elastic.co/downloads/eck/2.14.0/crds.yaml
+kubectl apply -f https://download.elastic.co/downloads/eck/2.14.0/operator.yaml
+kubectl get namespaces 
+cd .
+cd ..
+ll
+cd ..
+ll
+cd local/init-project/
+ll
+cd wso2/
+ll
+./generate-keys.sh 
+ll
+rm -rf temp/
+ll
+./generate-keys.sh 
+helm ll
+ll
+cd ..
+ll
+cd helm/chart-apim/
+pwd
+cd ..
+cd infrastructure/local/
+helm install am-pattern-3 /home/kuszyp/o4b/gitlab.o4b.tech/pu/ciam/helm/chart-apim/am-pattern-3 -f deploy/values-local.yaml -f deploy/values-local-init-is.yaml -f deploy/am/cp/instance1/bin/api-manager-sh.yaml -f deploy/am/cp/instance1/conf/deployment-toml.yaml -f deploy/am/cp/instance1/conf/log4j2-properties.yaml -f deploy/am/cp/instance1/docker-entrypoint-sh.yaml -f deploy/am/cp/instance2/bin/api-manager-sh.yaml -f deploy/am/cp/instance2/conf/deployment-toml.yaml -f deploy/am/cp/instance2/conf/log4j2-properties.yaml -f deploy/am/cp/instance2/docker-entrypoint-sh.yaml -f deploy/am/gateway/Default/bin/api-manager-sh.yaml -f deploy/am/gateway/Default/conf/deployment-toml.yaml -f deploy/am/gateway/Default/conf/log4j2-properties.yaml -f deploy/is/bin/wso2server-sh.yaml -f deploy/is/conf/deployment-toml.yaml -f deploy/is/conf/log4j2-properties.yaml -f deploy/is/repository/deployment/server/userstores/CITIZENS.yaml -f deploy/is/repository/deployment/server/userstores/EMPLOYEES.yaml -f deploy/is/repository/deployment/server/userstores/PLATFORM.yaml -n local-ciam
+kubectl -n local-ciam get pods
+cd ..
+cd local/init-project/
+ll
+cd elastic-cloud/
+ll
+kubectl apply -f elasticsearch.yaml 
+kubectl apply -f kibana.yaml 
+cat init-monitoring-configuration-job.yaml 
+cat init-monitoring-configuration-cm.yaml 
+cat init-monitoring-configuration-job.yaml 
+kubectl -n local-ciam get pods
+kubectl -n local-ciam logs am-pattern-3-is-deployment-0 
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam |grep password | base64 -d
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam |grep password | base64
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam |grep password
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam -o yaml
+kubectl get secrets -n local-ciam wso2db-pgo-cluster-pguser-wso2iam -o yaml |grep password
+cd 
+cd github.com/kuszyp/
+ll
+cd postgres-operator-examples/
+ll
+nvim .
+cd 
+cd github.com/kuszyp/postgres-operator-examples/
+ll
+cd .git
+ll
+nvim .
+cd 
+cd o4b/gitlab.o4b.tech/pu/ciam/
+ll
+cd infrastructure/test/
+ll
+cd ..
+cat README.md 
+cd 
+cd github.com/kuszyp/postgres-operator-examples/
+ll
+nvim .
+cd /etc/apt/sources.list.d/
+;;
+ll
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+sudo nala update
+sudo apt update
+sudo nano shells\:fish\:release\:3.list 
+sudo rm shells\:fish\:release\:3.list 
+sudo apt update
+ll
+cd ..
+ll
+sudo nano sources.list
+cd sources.list.d/
+ll
+sudo nano github-cli.list 
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) && sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y
+sudo apt update
+sudo nala update
+sudo nala upgrade
+cd 
+exit
+ll
+ls -al
+cd 
+cd nerd-fonts/
+ll
+exit
+ll
+lla
 exit

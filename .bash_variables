@@ -1,0 +1,23 @@
+#
+# Custom Java settings
+# --------------------
+#export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+export JAVA_HOME=/usr/lib/jvm/java-11.0.8-openjdk-amd64/
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+#
+# Custom PATH settings
+# --------------------
+export PATH=$PATH:~/idea-IC-241.18034.62/bin
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:/opt/Postman
+#export PATH=$PATH:~/.npm-global/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/apictl
+
+#
+# ELK
+# --------------------
+export ELASTIC_PASSWORD="gx0J55qjGdyO27RMG+Yr"
