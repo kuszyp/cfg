@@ -1,10 +1,5 @@
 docker image ls
 docker image rm wso2-bootstrap-bootstrap:latest 
-docker network ls
-docker compose up
-docker compose down
-docker image ls
-docker image rm wso2-bootstrap-bootstrap:latest 
 docker container ls
 docker image ls
 docker compose up
@@ -1997,4 +1992,9 @@ exit
 nvim .
 exit
 nvim .
+exit
+nvim .
+exit
+nano .bashrc 
+nano .bash_variables 
 exit

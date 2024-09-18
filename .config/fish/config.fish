@@ -1,6 +1,27 @@
 ###############################################################################
 # custom setup
-fish_add_path ~/.config/bin
+#
+
+###############################################################################
+# user shell variables
+#
+export HOME=/home/kuszyp
+export GCM_CREDENTIAL_STORE=plaintext
+#export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+export JAVA_HOME=/usr/lib/jvm/java-11.0.8-openjdk-amd64/
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+###############################################################################
+
+fish_add_path $HOME/.config/bin
+fish_add_path $HOME/idea-IC-241.18034.62/bin
+fish_add_path $JAVA_HOME/bin
+fish_add_path /opt/Postman
+fish_add_path $HOME/.npm-global/bin
+fish_add_path /usr/local/go/bin
+fish_add_path $HOME/go/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/apictl
+
 set -U fish_greeting # disable fish greeting
 set -U fish_key_bindings fish_vi_key_bindings
 set -Ux EDITOR nvim
@@ -9,7 +30,7 @@ set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
-set sponge_successful_exit_codes 0 127 # filter out commands that don't have 0 as an exit code
+#set sponge_successful_exit_codes 0 127 # filter out commands that don't have 0 as an exit code
 
 ###############################################################################
 
@@ -21,7 +42,8 @@ end
 # aliases
 #
 alias config='/usr/bin/git --git-dir=/home/kuszyp/.cfg/ --work-tree=/home/kuszyp'
-alias g git
+#alias g git
+
 command -qv nvim && alias vim nvim
 
 if type -q exa
@@ -30,11 +52,6 @@ if type -q exa
 end
 ###############################################################################
 
-###############################################################################
-# user shell variables
-#
-export GCM_CREDENTIAL_STORE=plaintext
-###############################################################################
 
 # name: sashimi
 function fish_prompt
