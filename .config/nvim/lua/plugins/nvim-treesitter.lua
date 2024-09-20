@@ -34,6 +34,10 @@ return {
         "vim",
         "yaml",
         "helm",
+
+        -- python
+        -- "ninja",
+        -- "rst",
       })
     end,
   },

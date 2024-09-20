@@ -54,6 +54,17 @@ vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 -- You can disable this for a buffer by setting `vim.b.trouble_lualine = false`
 vim.g.trouble_lualine = true
 
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+
+vim.g.shell = "fish"
+
+-- LSP Server to use for Python.
+-- Set to "basedpyright" to use basedpyright instead of pyright.
+vim.g.lazyvim_python_lsp = "pyright"
+-- Set to "ruff_lsp" to use the old LSP implementation version.
+vim.g.lazyvim_python_ruff = "ruff"
+
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
@@ -116,7 +127,7 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
-opt.wrap = false -- Disable line wrap
+-- opt.wrap = false -- Disable line wrap
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
@@ -128,7 +139,10 @@ else
   opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
-
-vim.g.shell = "fish"
+-- colorcolumn and wrapping long lines
+opt.colorcolumn = "80,120"
+opt.textwidth = 0
+opt.wrapmargin = 0
+opt.wrap = true
+opt.linebreak = true
+opt.columns = 80
