@@ -7,8 +7,8 @@
 #
 export HOME=/home/kuszyp
 export GCM_CREDENTIAL_STORE=plaintext
-#export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
-export JAVA_HOME=/usr/lib/jvm/java-11.0.8-openjdk-amd64/
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
+#export JAVA_HOME=/usr/lib/jvm/java-11.0.8-openjdk-amd64/
 #export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ###############################################################################
 
