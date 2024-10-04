@@ -36,8 +36,8 @@ return {
         "helm",
 
         -- python
-        -- "ninja",
-        -- "rst",
+        "ninja",
+        "rst",
       })
     end,
   },
