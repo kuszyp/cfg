@@ -1,6 +1,12 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc", "pyright" } },
+    opts = {
+      ensure_installed = {
+        "markdownlint-cli2",
+        "markdown-toc",
+        "pyright",
+      },
+    },
   },
 }
