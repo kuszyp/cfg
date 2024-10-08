@@ -1,52 +1,181 @@
 return {
+  --[[
+    --  init:
+    --  init functions are always executed during startup. Mostly useful for setting vim.g.* configurations used by Vim
+    --  plugins startus
+    --
+    --  opts:
+    --  opts should be a table (will be merged with parent specs), return a table (replaces parent specs) or should
+    --  change table. The table will be passed to the Plugin.config() function. Setting this value will imply Plugin.consig().
+    --
+    --  This will automatically call require('nvim-lspconfig').setup(opts)
+    --
+    --  config:
+    --  config is executed when the plugin loads. The default implementation will automatically run
+    --  require(MAIN).setup(opts) if opts or config=true is set. Lazy uses several heuristics to determine the plugin's
+    --  MAIN module automatically based on the plugin's name. (opts is recommended way to configure plugins)
+    --]]
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        marksman = {},
-        helm_ls = {},
-        ruff = {
-          cmd_env = { RUFF_TRACE = "messages" },
-          init_options = {
-            settings = {
-              logLevel = "error",
-            },
-          },
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
-        ruff_lsp = {
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
-      },
-      setup = {
-        yamlls = function()
-          LazyVim.lsp.on_attach(function(client, buffer)
-            if vim.bo[buffer].filetype == "helm" then
-              vim.schedule(function()
-                vim.cmd("LspStop ++force yamlls")
-              end)
-            end
-          end, "yamlls")
-        end,
-        ruff = function()
-          LazyVim.lsp.on_attach(function(client, _)
-            -- Disable hover in favor of Pyright
-            client.server_capabilities.hoverProvider = false
-          end, "ruff")
-        end,
-      },
+    event = "LazyFile",
+    dependencies = {
+      "mason.nvim",
+      { "williamboman/mason-lspconfig.nvim", config = function() end },
     },
+    -- table or fun(LazyPlugin, opts:table)
+    opts = function()
+      ---@class PluginLspOpts
+      local ret = {
+        -- options for vim.diagnostic.config()
+        ---@type vim.diagnostic.Opts
+        diagnostics = {
+          underline = true,
+          update_in_insert = false,
+          virtual_text = {
+            spacing = 4,
+            source = "if_many",
+            prefix = "●",
+            -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+            -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+            -- prefix = "icons",
+          },
+          severity_sort = true,
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
+              [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
+              [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
+              [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
+            },
+          },
+        },
+        -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+        -- Be aware that you also will need to properly configure your LSP server to
+        -- provide the inlay hints.
+        inlay_hints = {
+          enabled = true,
+          exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
+        },
+        -- Enable this to enable the builtin LSP code lenses on Neovim >= 0.10.0
+        -- Be aware that you also will need to properly configure your LSP server to
+        -- provide the code lenses.
+        codelens = {
+          enabled = false,
+        },
+        -- Enable lsp cursor word highlighting
+        document_highlight = {
+          enabled = true,
+        },
+        -- add any global capabilities here
+        capabilities = {
+          workspace = {
+            fileOperations = {
+              didRename = true,
+              willRename = true,
+            },
+          },
+        },
+        -- options for vim.lsp.buf.format
+        -- `bufnr` and `filter` is handled by the LazyVim formatter,
+        -- but can be also overridden when specified
+        format = {
+          formatting_options = nil,
+          timeout_ms = nil,
+        },
+        -- LSP Server Settings
+        ---@type lspconfig.options
+        servers = {
+          lua_ls = {
+            -- mason = false, -- set to false if you don't want this server to be installed with mason
+            -- Use this to add any additional keymaps
+            -- for specific lsp servers
+            -- ---@type LazyKeysSpec[]
+            -- keys = {},
+            settings = {
+              Lua = {
+                workspace = {
+                  checkThirdParty = false,
+                },
+                codeLens = {
+                  enable = true,
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
+                doc = {
+                  privateName = { "^_" },
+                },
+                hint = {
+                  enable = true,
+                  setType = false,
+                  paramType = true,
+                  paramName = "Disable",
+                  semicolon = "Disable",
+                  arrayIndex = "Disable",
+                },
+              },
+            },
+          },
+          helm_ls = {},
+          --[[
+          ruff = {
+            cmd_env = { RUFF_TRACE = "messages" },
+            init_options = {
+              settings = {
+                logLevel = "error",
+              },
+            },
+            keys = {
+              {
+                "<leader>co",
+                LazyVim.lsp.action["source.organizeImports"],
+                desc = "Organize Imports",
+              },
+            },
+          },
+          ruff_lsp = {
+            keys = {
+              {
+                "<leader>co",
+                LazyVim.lsp.action["source.organizeImports"],
+                desc = "Organize Imports",
+              },
+            },
+          },
+          --]]
+        },
+        -- you can do any additional lsp server setup here
+        -- return true if you don't want this server to be setup with lspconfig
+        ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+        setup = {
+          -- example to setup with typescript.nvim
+          -- tsserver = function(_, opts)
+          --   require("typescript").setup({ server = opts })
+          --   return true
+          -- end,
+          -- Specify * to use this function as a fallback for any server
+          -- ["*"] = function(server, opts) end,
+
+          yamlls = function()
+            LazyVim.lsp.on_attach(function(client, buffer)
+              if vim.bo[buffer].filetype == "helm" then
+                vim.schedule(function()
+                  vim.cmd("LspStop ++force yamlls")
+                end)
+              end
+            end, "yamlls")
+          end,
+          --[[
+          ruff = function()
+            LazyVim.lsp.on_attach(function(client, _)
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end, "ruff")
+          end,
+          --]]
+        },
+      }
+      return ret
+    end,
   },
 }

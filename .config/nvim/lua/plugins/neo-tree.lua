@@ -132,22 +132,22 @@ return {
             desc = "Open with System Application",
           },
           ["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
-          ["tf"] = {
-            function(state)
-              local node = state.tree:get_node()
-              local path = node:get_id()
-              require("telescope.builtin").find_files(getTelescopeOpts(state, path))
-            end,
-            desc = "telescope_find",
-          },
-          ["tg"] = {
-            function(state)
-              local node = state.tree:get_node()
-              local path = node:get_id()
-              require("telescope.builtin").live_grep(getTelescopeOpts(state, path))
-            end,
-            desc = "telescope_grep",
-          },
+          --          ["tf"] = {
+          --            function(state)
+          --              local node = state.tree:get_node()
+          --              local path = node:get_id()
+          --              require("telescope.builtin").find_files(getTelescopeOpts(state, path))
+          --            end,
+          --            desc = "telescope_find",
+          --          },
+          --          ["tg"] = {
+          --            function(state)
+          --              local node = state.tree:get_node()
+          --              local path = node:get_id()
+          --              require("telescope.builtin").live_grep(getTelescopeOpts(state, path))
+          --            end,
+          --            desc = "telescope_grep",
+          --          },
         },
       }
 

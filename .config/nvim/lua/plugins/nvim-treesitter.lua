@@ -35,7 +35,7 @@ return {
         "yaml",
         "helm",
 
-        -- python
+        "python",
         "ninja",
         "rst",
       })

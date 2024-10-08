@@ -6,11 +6,22 @@ I found the idea to store dotfiles in the repository in [LazyVim for Ambitious D
 
 ## Table of Contents
 
-1. [Dotfiles repository init snippet](#dotfiles-repository-init-snippet)
-2. [Install dotfiles onto new System](#install-dotfiles-onto-new-system)
-3. [Useful commands](#useful-commands)
-4. [Useful scripts](#useful-scripts)
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Dotfiles repository init snippet](#dotfiles-repository-init-snippet)
+4. [Install dotfiles onto new System](#install-dotfiles-onto-new-system)
+5. [Useful commands](#useful-commands)
+6. [Useful scripts](#useful-scripts)
+7. [TODO](#todo)
 
+## Installation
+
+1. Please install below software
+    * [neovim](https://github.com/neovim/neovim/tree/master)
+    * [LazyVim](https://github.com/LazyVim/LazyVim)
+    * [fish shell](https://github.com/fish-shell/fish-shell)
+
+## Usage
 
 ## Dotfiles repository init snippet
 
@@ -33,7 +44,6 @@ echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $H
 `alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
 5. Checkout the actual content from the bare repository to `$HOME`
 `config checkout`
-
 
 When the step above fail with a message like:
 
@@ -59,7 +69,6 @@ After this just run `config checkout` and set the flag `showUntrackedFiles` to `
 
 ```bash
 config config --local status.showUntrackedFiles no
-
 ```
 
 Final snippet
@@ -81,12 +90,11 @@ config checkout
 config config status.showUntrackedFiles no
 ```
 
-
 ## Useful commands
 
 Assign repository with origin
 
-```bash 
+```bash
 config remote add origin [REPOSITORY ADDRESS]
 ```
 
@@ -108,13 +116,11 @@ Set up hot to reconcile divergent branches
 config config pull.rebase true
 ```
 
-
 ## Useful scripts
 
 I found below scripts usefull when i was playing around with storing dotfiles in the repository.
 
 ### [complete-alias](https://github.com/cykerway/complete-alias)
-
 
 Install dependency bash-completion
 
@@ -145,3 +151,18 @@ cat
 condreload
 ...
 ```
+
+## TODO
+
+* [ ] Group nvim lua config files by the purpose, ie. `python.lua`, `editor.lua`, etc.
+  * [ ] `python.lua` - store plugins configurations for python
+    * [ ] add static analysis and linting
+    * [ ] autoformatting
+    * [ ] precise seeking
+  * [ ] `editor.lua` - store global editor configurations
+  * [ ] `markdown.lua` - configurations for markdown files
+    * [ ] move non-markdown settings outside of `lang/markdown.lua` file
+  * [ ] `java.lua`
+  * [ ] `colorscheme.lua`
+  * [ ] `docker.lua`
+  * [ ] `helm.lua`

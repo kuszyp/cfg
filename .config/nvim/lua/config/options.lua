@@ -140,9 +140,8 @@ else
 end
 
 -- colorcolumn and wrapping long lines
-opt.colorcolumn = "80,120"
+opt.colorcolumn = "120"
 opt.textwidth = 120
 opt.wrapmargin = 0
 opt.wrap = true
 opt.linebreak = true
--- opt.columns = 80
