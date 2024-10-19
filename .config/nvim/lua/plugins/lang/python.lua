@@ -12,7 +12,7 @@ return {
     },
   },
 
-  --[[ 
+  --[[ https://github.com/neovim/nvim-lspconfig
   --]]
   {
     "neovim/nvim-lspconfig",
@@ -227,5 +227,12 @@ return {
     },
     -- mason-nvim-dap is loaded when nvim-dap loads
     config = function() end,
+  },
+
+  --[[ https://github.com/nvim-treesitter/nvim-treesitter
+  --]]
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "ninja", "rst" } },
   },
 }

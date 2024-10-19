@@ -1,4 +1,8 @@
 return {
+
+  --[[
+  --
+  --]]
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
@@ -8,6 +12,9 @@ return {
     end,
   },
 
+  --[[
+  --
+  --]]
   {
     "hrsh7th/nvim-cmp",
     ---@param opts cmp.ConfigSchema
