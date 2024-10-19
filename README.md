@@ -155,14 +155,10 @@ condreload
 ## TODO
 
 * [ ] Group nvim lua config files by the purpose, ie. `python.lua`, `editor.lua`, etc.
-  * [ ] `python.lua` - store plugins configurations for python
-    * [ ] add static analysis and linting
-    * [ ] autoformatting
-    * [ ] precise seeking
+  * [x] `python.lua` - store plugins configurations for python
   * [ ] `editor.lua` - store global editor configurations
-  * [ ] `markdown.lua` - configurations for markdown files
-    * [ ] move non-markdown settings outside of `lang/markdown.lua` file
-  * [ ] `java.lua`
+  * [x] `markdown.lua` - configurations for markdown files
+  * [x] `java.lua`
   * [ ] `colorscheme.lua`
   * [ ] `docker.lua`
-  * [ ] `helm.lua`
+  * [x] `helm.lua`
