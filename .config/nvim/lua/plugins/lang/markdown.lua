@@ -170,4 +170,16 @@ return {
       return ret
     end,
   },
+
+  --[[ https://github.com/nvim-treesitter/nvim-treesitter
+  --]]
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "markdown",
+        "markdown_inline",
+      },
+    },
+  },
 }

@@ -1,5 +1,7 @@
 return {
-  --[[
+  --[[ 
+    --  https://github.com/neovim/nvim-lspconfig
+    --
     --  init:
     --  init functions are always executed during startup. Mostly useful for setting vim.g.* configurations used by Vim
     --  plugins startus
@@ -116,33 +118,6 @@ return {
               },
             },
           },
-          helm_ls = {},
-          --[[
-          ruff = {
-            cmd_env = { RUFF_TRACE = "messages" },
-            init_options = {
-              settings = {
-                logLevel = "error",
-              },
-            },
-            keys = {
-              {
-                "<leader>co",
-                LazyVim.lsp.action["source.organizeImports"],
-                desc = "Organize Imports",
-              },
-            },
-          },
-          ruff_lsp = {
-            keys = {
-              {
-                "<leader>co",
-                LazyVim.lsp.action["source.organizeImports"],
-                desc = "Organize Imports",
-              },
-            },
-          },
-          --]]
         },
         -- you can do any additional lsp server setup here
         -- return true if you don't want this server to be setup with lspconfig
@@ -155,24 +130,6 @@ return {
           -- end,
           -- Specify * to use this function as a fallback for any server
           -- ["*"] = function(server, opts) end,
-
-          yamlls = function()
-            LazyVim.lsp.on_attach(function(client, buffer)
-              if vim.bo[buffer].filetype == "helm" then
-                vim.schedule(function()
-                  vim.cmd("LspStop ++force yamlls")
-                end)
-              end
-            end, "yamlls")
-          end,
-          --[[
-          ruff = function()
-            LazyVim.lsp.on_attach(function(client, _)
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end, "ruff")
-          end,
-          --]]
         },
       }
       return ret
