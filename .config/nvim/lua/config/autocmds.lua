@@ -148,3 +148,23 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end)
   end,
 })
+
+-- remove all trailing whitespace on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    pcall(function()
+      vim.cmd([[%s/\s\+$//e]])
+    end)
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
+-- always enter normal mode when leaving telescope prompt
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+  pattern = { "TelescopePrompt" },
+  callback = function()
+    vim.api.nvim_exec2("silent! stopinsert!", {})
+  end,
+})
