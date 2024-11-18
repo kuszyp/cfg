@@ -17,9 +17,9 @@ I found the idea to store dotfiles in the repository in [LazyVim for Ambitious D
 ## Installation
 
 1. Please install below software
-    * [neovim](https://github.com/neovim/neovim/tree/master)
-    * [LazyVim](https://github.com/LazyVim/LazyVim)
-    * [fish shell](https://github.com/fish-shell/fish-shell)
+   - [neovim](https://github.com/neovim/neovim/tree/master)
+   - [LazyVim](https://github.com/LazyVim/LazyVim)
+   - [fish shell](https://github.com/fish-shell/fish-shell)
 
 ## Usage
 
@@ -35,15 +35,15 @@ echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $H
 ## Install dotfiles onto new system
 
 1. Make sure that you have committed the alias to your _.bashrc_
-`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
+   `alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
 2. Ignore the folder where you will be clone the repository, so that you don't create weird recursion problems
-`echo ".cfg" >> .gitignore`
+   `echo ".cfg" >> .gitignore`
 3. Clone dotfiles into a base repository in a "dot" folder of `$HOME`
-`git clone --bare <git-repo-url> $HOME/.cfg`
+   `git clone --bare <git-repo-url> $HOME/.cfg`
 4. Define the alias in the current shell scope
-`alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
+   `alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'`
 5. Checkout the actual content from the bare repository to `$HOME`
-`config checkout`
+   `config checkout`
 
 When the step above fail with a message like:
 
@@ -154,11 +154,11 @@ condreload
 
 ## TODO
 
-* [ ] Group nvim lua config files by the purpose, ie. `python.lua`, `editor.lua`, etc.
-  * [x] `python.lua` - store plugins configurations for python
-  * [ ] `editor.lua` - store global editor configurations
-  * [x] `markdown.lua` - configurations for markdown files
-  * [x] `java.lua`
-  * [ ] `colorscheme.lua`
-  * [ ] `docker.lua`
-  * [x] `helm.lua`
+- [ ] Group nvim lua config files by the purpose, ie. `python.lua`, `editor.lua`, etc.
+  - [x] `python.lua` - store plugins configurations for python
+  - [ ] `editor.lua` - store global editor configurations
+  - [x] `markdown.lua` - configurations for markdown files
+  - [x] `java.lua`
+  - [ ] `colorscheme.lua`
+  - [ ] `docker.lua`
+  - [x] `helm.lua`

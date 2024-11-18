@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
-    (vim.hl or vim.highlight).on_yank()
+    vim.highlight.on_yank()
   end,
 })
 
@@ -58,34 +58,28 @@ vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
     "PlenaryTestPopup",
-    "checkhealth",
-    "dbout",
-    "gitsigns-blame",
     "grug-far",
     "help",
     "lspinfo",
-    "neotest-output",
-    "neotest-output-panel",
-    "neotest-summary",
     "notify",
     "qf",
-    "snacks_win",
     "spectre_panel",
     "startuptime",
     "tsplayground",
+    "neotest-output",
+    "checkhealth",
+    "neotest-summary",
+    "neotest-output-panel",
+    "dbout",
+    "gitsigns.blame",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.schedule(function()
-      vim.keymap.set("n", "q", function()
-        vim.cmd("close")
-        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
-      end, {
-        buffer = event.buf,
-        silent = true,
-        desc = "Quit buffer",
-      })
-    end)
+    vim.keymap.set("n", "q", "<cmd>close<cr>", {
+      buffer = event.buf,
+      silent = true,
+      desc = "Quit buffer",
+    })
   end,
 })
 
@@ -117,16 +111,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- Disable autoformat for lua files
---[[
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "lua" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
---]]
-
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
@@ -136,5 +120,51 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
     local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+vim.filetype.add({
+  pattern = {
+    [".*"] = {
+      function(path, buf)
+        return vim.bo[buf]
+            and vim.bo[buf].filetype ~= "bigfile"
+            and path
+            and vim.fn.getfsize(path) > vim.g.bigfile_size
+            and "bigfile"
+          or nil
+      end,
+    },
+  },
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("bigfile"),
+  pattern = "bigfile",
+  callback = function(ev)
+    vim.b.minianimate_disable = true
+    vim.schedule(function()
+      vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or ""
+    end)
+  end,
+})
+
+-- remove all trailing whitespace on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    pcall(function()
+      vim.cmd([[%s/\s\+$//e]])
+    end)
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
+-- always enter normal mode when leaving telescope prompt
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+  pattern = { "TelescopePrompt" },
+  callback = function()
+    vim.api.nvim_exec2("silent! stopinsert!", {})
   end,
 })

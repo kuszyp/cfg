@@ -1,51 +1,36 @@
 return {
-  --[[ https://github.com/catppuccin/nvim 
+  --[[
+  -- https://github.com/akinsho/bufferline.nvim
   --]]
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    lazy = true,
+    "akinsho/bufferline.nvim",
+    optional = true,
+    opts = function(_, opts)
+      if (vim.g.colors_name or ""):find("catppuccin") then
+        opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+      end
+    end,
   },
 
-  --[[ https://github.com/Mofiqul/dracula.nvim
-  --]]
-  {
-    "Mofiqul/dracula.nvim",
-    lazy = true,
-    --[[
-    opts = {
-      overrides = function(colors)
-        return {
-          Change the color of columns at 80,120 character
-          ColorColumn = { bg = colors.black },
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
 
-          Change the color of cursor column
-          CursorColumn = { bg = colors.selection },
-        }
-      end,
-    },
-    --]]
-  },
-
-  --[[ Colorscheme | LazyVim
+  --[[
+  -- https://github.com/akinsho/bufferline.nvim
+  --
+  -- A snazzy 💅 buffer line (with tabpage integration) for Neovim built using lua
+  -- This is what powers LazyVim's fancy-looking tabs, which include filetype icons and close buttons.
+  --
+  -- Default plugin setup provided by LazyVim left only for reference
   --]]
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin-macchiato", -- dracula, catppuccin, catppuccin-latte, catppuccin-macchiato, catppuccin-mocha, catppuccin-frappe
-    },
-  },
-
-  --[[ https://github.com/akinsho/bufferline.nvim
-  --]]
+  --[[
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
-      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
       { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
       { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
       { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
@@ -58,9 +43,9 @@ return {
     opts = {
       options = {
       -- stylua: ignore
-      close_command = function(n) LazyVim.ui.bufremove(n) end,
+      close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore
-      right_mouse_command = function(n) LazyVim.ui.bufremove(n) end,
+      right_mouse_command = function(n) Snacks.bufdelete(n) end,
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
@@ -95,10 +80,19 @@ return {
       })
     end,
   },
-
-  --[[ https://github.com/nvim-lualine/lualine.nvim
-  -- the opts function can also be used to change the default opts:
   --]]
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/nvim-lualine/lualine.nvim
+  --
+  -- A blazing fast and easy to configure Neovim statusline written in Lua
+  -- Default LazyVim setup left for reference
+  --]]
+  --[[
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -225,4 +219,249 @@ return {
       return opts
     end,
   },
+  --]]
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/lukas-reineke/indent-blankline.nvim
+  --
+  -- This plugin adds indentation guides to Neovim. It uses Neovim's virtual text feature and no conceal
+  -- Default LazyVim setup left for reference
+  --]]
+  --[[
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "LazyFile",
+    opts = function()
+      Snacks.toggle({
+        name = "Indention Guides",
+        get = function()
+          return require("ibl.config").get_config(0).enabled
+        end,
+        set = function(state)
+          require("ibl").setup_buffer(0, { enabled = state })
+        end,
+      }):map("<leader>ug")
+
+      return {
+        indent = {
+          char = "│",
+          tab_char = "│",
+        },
+        scope = { show_start = false, show_end = false },
+        exclude = {
+          filetypes = {
+            "Trouble",
+            "alpha",
+            "dashboard",
+            "help",
+            "lazy",
+            "mason",
+            "neo-tree",
+            "notify",
+            "snacks_notif",
+            "snacks_terminal",
+            "snacks_win",
+            "toggleterm",
+            "trouble",
+          },
+        },
+      }
+    end,
+    main = "ibl",
+  },
+  --]]
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/folke/noice.nvim
+  --
+  -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
+  -- Default LazyVim setup left for reference
+  --]]
+  --  {
+  --    "folke/noice.nvim",
+  --    event = "VeryLazy",
+  --    opts = {
+  --      lsp = {
+  --        override = {
+  --          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+  --          ["vim.lsp.util.stylize_markdown"] = true,
+  --          ["cmp.entry.get_documentation"] = true,
+  --        },
+  --      },
+  --      routes = {
+  --        {
+  --          filter = {
+  --            event = "msg_show",
+  --            any = {
+  --              { find = "%d+L, %d+B" },
+  --              { find = "; after #%d+" },
+  --              { find = "; before #%d+" },
+  --            },
+  --          },
+  --          view = "mini",
+  --        },
+  --      },
+  --      presets = {
+  --        bottom_search = true,
+  --        command_palette = true,
+  --        long_message_to_split = true,
+  --      },
+  --    },
+  --  -- stylua: ignore
+  --  keys = {
+  --    { "<leader>sn", "", desc = "+noice"},
+  --    { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+  --    { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+  --    { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
+  --    { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+  --    { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+  --    { "<leader>snt", function() require("noice").cmd("pick") end, desc = "Noice Picker (Telescope/FzfLua)" },
+  --    { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
+  --    { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+  --  },
+  --    config = function(_, opts)
+  --      -- HACK: noice shows messages from before it was enabled,
+  --      -- but this is not ideal when Lazy is installing plugins,
+  --      -- so clear the messages in this case.
+  --      if vim.o.filetype == "lazy" then
+  --        vim.cmd([[messages clear]])
+  --      end
+  --      require("noice").setup(opts)
+  --    end,
+  --  },
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/echasnovski/mini.icons
+  --
+  --
+  -- Icon provider
+  -- Default LazyVim setup left for reference
+  --]]
+  --[[
+  {
+    "echasnovski/mini.icons",
+    lazy = true,
+    opts = {
+      file = {
+        [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
+        ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+      },
+      filetype = {
+        dotenv = { glyph = "", hl = "MiniIconsYellow" },
+      },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
+  --]]
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/MunifTanjim/nui.nvim
+  --
+  -- UI Component Library for Neovim
+  -- Default LazyVim setup left for reference
+  --]]
+  --[[
+  { "MunifTanjim/nui.nvim", lazy = true },
+  --]]
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/nvimdev/dashboard-nvim
+  --
+  -- Fancy and Blazing Fast start screen plugin of neovim
+  -- Default LazyVim setup left for reference
+  --]]
+  --  {
+  --    "nvimdev/dashboard-nvim",
+  --    lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
+  --    opts = function()
+  --      local logo = [[
+  --         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+  --         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z
+  --         ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z
+  --         ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z
+  --         ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
+  --         ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
+  --    ]]
+  --
+  --      logo = string.rep("\n", 8) .. logo .. "\n\n"
+  --
+  --      local opts = {
+  --        theme = "doom",
+  --        hide = {
+  --          -- this is taken care of by lualine
+  --          -- enabling this messes up the actual laststatus setting after loading a file
+  --          statusline = false,
+  --        },
+  --        config = {
+  --          header = vim.split(logo, "\n"),
+  --        -- stylua: ignore
+  --        center = {
+  --          { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },
+  --          { action = "ene | startinsert",                              desc = " New File",        icon = " ", key = "n" },
+  --          { action = 'lua LazyVim.pick("oldfiles")()',                 desc = " Recent Files",    icon = " ", key = "r" },
+  --          { action = 'lua LazyVim.pick("live_grep")()',                desc = " Find Text",       icon = " ", key = "g" },
+  --          { action = 'lua LazyVim.pick.config_files()()',              desc = " Config",          icon = " ", key = "c" },
+  --          { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
+  --          { action = "LazyExtras",                                     desc = " Lazy Extras",     icon = " ", key = "x" },
+  --          { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
+  --          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
+  --        },
+  --          footer = function()
+  --            local stats = require("lazy").stats()
+  --            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+  --            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+  --          end,
+  --        },
+  --      }
+  --
+  --      for _, button in ipairs(opts.config.center) do
+  --        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+  --        button.key_format = "  %s"
+  --      end
+  --
+  --      -- open dashboard after closing lazy
+  --      if vim.o.filetype == "lazy" then
+  --        vim.api.nvim_create_autocmd("WinClosed", {
+  --          pattern = tostring(vim.api.nvim_get_current_win()),
+  --          once = true,
+  --          callback = function()
+  --            vim.schedule(function()
+  --              vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
+  --            end)
+  --          end,
+  --        })
+  --      end
+  --
+  --      return opts
+  --    end,
+  --  },
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
 }
