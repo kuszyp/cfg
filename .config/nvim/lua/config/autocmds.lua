@@ -138,3 +138,31 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+--[[
+-- bufIsBig function 
+-- takes a buffer index and returns if it's considered big
+--]]
+--[[
+local bufIsBig = function(bufnr)
+  local max_file_size = 100 * 1024 -- 100 KB
+  local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+  if ok and stats and stats.size > max_file_size then
+    return true
+  else
+    return false
+  end
+end
+--]]
+
+--[[
+-- Disable autocomplete for some file types
+--]]
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "text", "plaintex", "markdown", "typst", "gitcommit", "json", "jsonc", "json5" },
+  callback = function()
+    require("cmp").setup.buffer({
+      enabled = false,
+    })
+  end,
+})

@@ -175,3 +175,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 if [ -f ~/.bash_completion ]; then
   . ~/.bash_completion
 fi
+. "$HOME/.cargo/env"

@@ -44,6 +44,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ai.codeium" },
 
     { import = "lazyvim.plugins.extras.coding.yanky" },
+    --{ import = "lazyvim.plugins.extras.coding.blink" },
 
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },

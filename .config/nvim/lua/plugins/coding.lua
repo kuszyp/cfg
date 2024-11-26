@@ -9,6 +9,7 @@ return {
 
   {
     "nvim-cmp",
+    optional = true,
     dependencies = { "codeium.nvim" },
     opts = function(_, opts)
       table.insert(opts.sources, 1, {
@@ -89,27 +90,42 @@ return {
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
 
+  --{
+  --  "saghen/blink.compat",
+  --  opts = {},
+  --  version = not vim.g.lazyvim_blink_main and "*",
+  --},
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
   --[[
-  -- https://github.com/saghen/blink.cmp
-  --
-  -- blink.cmp is a completion plugin with support for LSPs and external sources that updates on every keystroke with 
-  -- minimal overhead (0.5-4ms async). It use a custom SIMD fuzzy searcher to easily handle >20k items. It provides 
-  -- extensibility via hooks into the trigger, sources and rendering pipeline. Plenty of work has been put into making 
-  -- each stage of the pipeline as intelligent as possible, such as frecency and proximity bonus on fuzzy matching, 
-  -- and this work is on-going
+  -- Disable completion in certain context, such as comments
   --]]
 
   {
-    "saghen/blink.cmp",
-    optional = true,
-    opts = {
-      sources = {
-        compat = vim.g.ai_cmp and { "codeium" } or nil,
-      },
-    },
-    dependencies = {
-      "codeium.nvim",
-      vim.g.ai_cmp and "saghen/blink.compat" or nil,
-    },
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      cmp.setup({
+        preselect = cmp.PreselectMode.None,
+        enabled = function()
+          -- disable completion in comments
+          local context = require("cmp.config.context")
+
+          -- keep command mode completion enabled when cursor is in a comment
+          if vim.api.nvim_get_mode().mode == "c" then
+            return true
+          else
+            return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+          end
+        end,
+      })
+    end,
   },
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
 }

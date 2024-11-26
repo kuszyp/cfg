@@ -146,3 +146,8 @@ vim.g.lazyvim_python_ruff = "ruff"
 
 -- Enable highlight of the current column
 opt.cursorcolumn = true
+
+-- set to `true` to follow the main branch
+-- you need to have a working rust toolchain to build the plugin
+-- in this case.
+vim.g.lazyvim_blink_main = false
