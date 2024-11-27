@@ -42,7 +42,8 @@ end
 # aliases
 #
 alias config='/usr/bin/git --git-dir=/home/kuszyp/.cfg/ --work-tree=/home/kuszyp'
-#alias g git
+alias g git
+alias v='nvim .'
 
 command -qv nvim && alias vim nvim
 
@@ -99,6 +100,7 @@ function fish_prompt
     echo -n -s $initial_indicator $whitespace $cwd $git_info $whitespace $ahead $status_indicator $whitespace
 end
 
+
 function _git_ahead
     set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
     if [ $status != 0 ]
@@ -126,3 +128,12 @@ end
 function _is_git_dirty
     echo (command git status -s --ignore-submodules=dirty 2>/dev/null)
 end
+
+#function fish_prompt -d "Write out the prompt"
+#    # This shows up as USER@HOST /home/user/ >, with the directory colored
+#    # $USER and $hostname are set by fish, so you can just use them
+#    # instead of using `whoami` and `hostname`
+#    printf '%s@%s %s%s%s > ' $USER $hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+#end
+
+starship init fish | source
