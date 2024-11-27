@@ -7,18 +7,18 @@ return {
   --
   --]]
 
-  {
-    "nvim-cmp",
-    optional = true,
-    dependencies = { "codeium.nvim" },
-    opts = function(_, opts)
-      table.insert(opts.sources, 1, {
-        name = "codeium",
-        group_index = 1,
-        priority = 100,
-      })
-    end,
-  },
+  --  {
+  --    "nvim-cmp",
+  --    optional = true,
+  --    dependencies = { "codeium.nvim" },
+  --    opts = function(_, opts)
+  --      table.insert(opts.sources, 1, {
+  --        name = "codeium",
+  --        group_index = 1,
+  --        priority = 100,
+  --      })
+  --    end,
+  --  },
 
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
@@ -27,15 +27,41 @@ return {
   --[[
   -- override nvim-cmp and add cmp-emoji
   --]]
-  {
-    "hrsh7th/nvim-cmp",
-    enabled = true,
-    dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
-  },
+  --{
+  --  "hrsh7th/nvim-cmp",
+  --  dependencies = { "hrsh7th/cmp-emoji" },
+  --  ---@param opts cmp.ConfigSchema
+  --  opts = function(_, opts)
+  --    table.insert(opts.sources, { name = "emoji" })
+  --  end,
+  --},
+
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+  --[[ ------------------------------------------------------------------------------------------------------------- ]]
+
+  --[[
+  -- https://github.com/hrsh7th/nvim-cmp
+  --
+  -- A completion engine plugin for neovim written in Lua. Completion sources are installed from external 
+  -- repositories and "sourced".
+  --
+  -- optional cmp integration with supermaven
+  --]]
+  --{
+  --  "hrsh7th/nvim-cmp",
+  --  optional = true,
+  --  dependencies = { "supermaven-nvim" },
+  --  opts = function(_, opts)
+  --    if vim.g.ai_cmp then
+  --      table.insert(opts.sources, 1, {
+  --        name = "supermaven",
+  --        group_index = 1,
+  --        priority = 100,
+  --      })
+  --    end
+  --  end,
+  --},
 
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
   --[[ ------------------------------------------------------------------------------------------------------------- ]]
